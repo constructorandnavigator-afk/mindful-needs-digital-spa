@@ -1,0 +1,8 @@
+{
+  "name": "Mindful Needs Digital Spa",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite",
+  "id": "243a3b35"
+}
