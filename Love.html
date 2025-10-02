@@ -1,0 +1,484 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Love Protokol</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  <style>
+    html, body {
+    overflow-y: auto;
+   -webkit-overflow-scrolling: touch; /* Za glatko skrolovanje na iOS-u */
+   }
+
+
+    .progress-container {
+      width: 100%;
+      background-color: #f0dbe5;
+      height: 6px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .progress-bar {
+      height: 6px;
+      background-color: #d46a92;
+      width: 0%;
+      transition: width 0.4s ease;
+    }
+
+    .screen {
+      display: none;
+      padding: 20px;
+      background: #ffffff;
+      color: #444;
+      min-height: 100vh; /* koristi min-height da omogući skrolovanje ako je sadržaj veći */
+      padding-bottom: 80px; /* prostor za futer, dovoljno da se ne preklapa */
+      overflow-y: auto;
+     -webkit-overflow-scrolling: touch;
+    }
+     
+     .screen.active {
+      display: block;
+    }
+
+    .logo {
+      width: 100px;
+      display: block;
+      margin: 0 auto 20px;
+    }
+
+    h2 {
+      color: #b05f6d;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    p {
+      background: #fdf2f6;
+      padding: 12px;
+      margin: 10px 0;
+      border-left: 4px solid #d46a92;
+      border-radius: 8px;
+      line-height: 1.6em;
+    }
+
+    button {
+      background-color: #d46a92;
+      color: white;
+      padding: 10px 20px;
+      margin-top: 20px;
+      border: none;
+      border-radius: 12px;
+      font-size: 1em;
+      cursor: pointer;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    button:hover {
+      background-color: #c05182;
+    }
+
+    .header-text {
+      background-color: #d46a92;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        font-size: 14px;
+        margin: 0;
+      }
+
+      .logo {
+        width: 80px;
+      }
+
+      .progress-container {
+        height: 4px;
+      }
+
+      .screen {
+        padding: 15px;
+      }
+
+      button {
+        padding: 8px 16px;
+        font-size: 0.9em;
+      }
+
+      h2 {
+        font-size: 1.5em;
+      }
+
+      p {
+        font-size: 1em;
+      }
+    }
+@media (max-width: 400px) {
+  body {
+    font-size: 13px;
+  }
+
+  .logo {
+    width: 60px;
+  }
+
+  .header-text {
+    font-size: 1.2em;
+    padding: 8px 0;
+  }
+
+  h2 {
+    font-size: 1.3em;
+  }
+
+  p {
+    font-size: 0.95em;
+    padding: 10px;
+  }
+
+  button {
+    padding: 8px 12px;
+    font-size: 0.85em;
+  }
+
+  .screen {
+    padding: 12px;
+  }
+
+  .progress-container {
+    height: 3px;
+  }
+
+  .progress-bar {
+    height: 3px;
+  }
+
+ }
+
+.header-text {
+  margin-bottom: 20px; /* Razmak između glavnog teksta i sledećeg dela */
+}
+
+.pocket-solution, .pocket-essentials {
+  background-color: #f0f0f0; /* Pozadina za ove delove */
+  padding: 10px; /* Unutrašnji razmak unutar pozadine */
+  margin-top: 10px; /* Razmak između header teksta i novih div-ova */
+  border-radius: 5px; /* Zaobljeni uglovi pozadine */
+}
+
+.pocket-solution {
+  font-weight: bold; /* Isticanje teksta u pocket-solution */
+}
+
+.pocket-essentials {
+  color: #555; /* Možeš promeniti boju za drugi deo teksta */
+}
+
+   </style>
+</head>
+<body>
+
+<div class="header-text">
+  Lojalnost, Jasnoća, Uvažavanje, Bliskost, Autentičnost, Vrednovanje
+  <div class="pocket-solution"><strong>MINDFUL NEEDS  DIGITAL SPA</strong></div>
+  <div class="pocket-essentials">Pocket Essentials Collection</div>
+</div>
+
+
+<div class="progress-container">
+  <div class="progress-bar" id="progress-bar"></div>
+</div>
+
+<div class="screen active" id="intro-screen">
+  <img src="LogoLjubav.png" alt="Logo" class="logo">
+  <h2>Dobrodošli u Ljubavnu Aplikaciju</h2>
+  <p>Ova ti aplikacija pomaže da razumeš, ojačaš i neguješ ljubav – prema sebi i drugima.</p>
+<p>Ljubav je najvažnije putovanje. Zaslužuje tvoju pažnju.</p>
+<button onclick="nextScreen()">Počni</button>
+
+</div>
+
+<div class="screen" id="screen-1">
+  <img src="LogoLjubav.png" alt="Logo" class="logo">
+  <h2>Samopouzdanje</h2>
+  <p><strong>Prihvati svoje nesavršenosti.</strong> Nikada ne možeš biti savršen/a, i to je potpuno u redu...</p>
+<p><strong>Postavi realne ciljeve.</strong> Počni sa malim, dostižnim ciljevima...</p>
+<p><strong>Neguj pozitivan unutrašnji govor.</strong> Prestani da sebi govoriš da nisi dovoljno dobar/a...</p>
+<p><strong>Okruži se podrškom drugih.</strong> Ljudi s kojima provodiš vreme...</p>
+<p><strong>Vežbaj zahvalnost.</strong> Fokusiraj se na ono što već imaš...</p>
+<button onclick="nextScreen()">Vredan/a sam</button>
+
+</div>
+
+<div class="screen" id="screen-2">
+  <img src="LogoLjubav.png" alt="Logo" class="logo">
+  <h2>Poštovanje</h2>
+  <p><strong>Poštuj razlike.</strong> Ne moraš misliti isto da bi voleo/la...</p>
+<p><strong>Granice nisu zidovi.</strong> Kada se postave zajedno...</p>
+<p><strong>Poštuj osećanja i iskustva partnera.</strong> Čak i ako ih u potpunosti ne razumeš...</p>
+<p><strong>Poštovanje se pokazuje u sitnicama</strong> – ton glasa...</p>
+<p><strong>Svađe ne znače kraj</strong> – ali način na koji se svađaš...</p>
+<button onclick="nextScreen()">Poštujem razlike</button>
+
+</div>
+
+<div class="screen" id="screen-3">
+  <img src="LogoLjubav.png" alt="Logo" class="logo">
+  <h2>Upoznajte jedno drugo</h2>
+  <p><strong>Budi svoj/a.</strong> Prvi utisak ne mora biti savršen...</p>
+<p><strong>Slušaj aktivno.</strong> Ljudi se otvaraju tamo gde osećaju da ih neko zaista sluša...</p>
+<p><strong>Zajedničke vrednosti su važne.</strong> Razmisli da li delite iste vrednosti...</p>
+<p><strong>Ne žuri sa idealizovanjem.</strong> Prvo upoznaj osobu...</p>
+<p><strong>Postavi digitalne granice.</strong> Poštovanje važi i online i uživo.</p>
+<button onclick="nextScreen()">Upoznaćemo se</button>
+
+</div>
+
+<div class="screen" id="screen-4">
+  <img src="LogoLjubav.png" alt="Logo" class="logo">
+  <h2>Razvod</h2>
+  <p><strong>Razvod nije neuspeh.</strong> Često je to hrabra odluka...</p>
+<p><strong>Komuniciraj jasno.</strong> Posebno ako imate decu...</p>
+<p><strong>Zapiši svoja osećanja.</strong> Razjasni misli...</p>
+<p><strong>Iskoristi svoje iskustvo.</strong> Ne počinješ od nule...</p>
+<button onclick="nextScreen()">Život ide dalje</button>
+
+</div>
+
+<div class="screen" id="screen-5">
+  <img src="LogoLjubav.png" alt="Logo" class="logo">
+  <h2>Okrenutost prema partneru</h2>
+  <p><strong>Budi prisutan/a.</strong> Sitnice – pogled, osmeh, slušanje...</p>
+<p><strong>Pokaži empatiju.</strong> Slušaj bez prekidanja...</p>
+<p><strong>Ponavljaj male geste.</strong> Podrška, proslava...</p>
+<p><strong>Prav pause u konfliktu.</strong> Pitaj se: „Šta mi partner pokušava reći?“...</p>
+<button onclick="nextScreen()">Tu sam</button>
+
+</div>
+
+<div class="screen" id="screen-6">
+  <img src="LogoLjubav.png" alt="Logo" class="logo">
+  <h2>Neverstvo u vezi</h2>
+  <p>Znakovi neverstva ne znače automatski kraj...</p>
+<p>Razumi šta je dovelo do neverstva...</p>
+<p>Poverenje se gradi, ali ga je teško povratiti...</p>
+<p>Odluka da oprostiš ili odeš mora doći iznutra...</p>
+<p>Digitalni svet je nova zona potencijalnog neverstva...</p>
+<button onclick="nextScreen()">Biram svoj put</button>
+
+</div>
+
+<div class="screen" id="screen-7">
+  <img src="LogoLjubav.png" alt="Logo" class="logo">
+  <h2>Rešavanje sukoba</h2>
+  <p>Konflikt nije znak loše veze – to je prilika za rast...</p>
+<p>Slušanje je aktivna veština...</p>
+<p>Ne čekaj da stvari postanu komplikovane...</p>
+<p>Ne teži da pobediš – traži rešenje...</p>
+<p>Uvedi pravilo „pauze“ ako napetost raste...</p>
+<button onclick="nextScreen()">Biramo rešenje</button>
+
+</div>
+
+<!-- Screen 8 -->
+<div class="screen" id="screen-8">
+  <img src="LogoLjubav.png" alt="Logo" class="logo">
+  <h2>Ljubavni jezik</h2>
+  <p>Različiti ljudi pokazuju ljubav na različite načine. Tvoj način možda nije isti kao partnerov – zato se ne oslanjaj samo na ono što bi tebi značilo. Otkrij jezik ljubavi svog partnera. Da li više reaguju na reči, dodire, poklone, pomoć ili zajedničko vreme? To može potpuno promeniti dinamiku veze.</p>
+<p>Iskazivanje ljubavi treba biti svakodnevna praksa. Male, ponovljene geste jačaju sigurnost i povezanost. Ne očekuj da partner čita tvoje misli. Ako ti je nešto važno – reci jasno. Otvorenost sprečava mnogo frustracije. Ljubav i zaljubljenost nisu isto. Zaljubljenost je inicijalni impuls, dok se ljubav gradi kroz vreme, poverenje i posvećenost.</p>
+<button onclick="nextScreen()">Pokazujem ljubav</button>
+
+</div>
+
+<!-- Screen 9 -->
+<div class="screen" id="screen-9">
+  <img src="LogoLjubav.png" alt="Logo" class="logo">
+  <h2>Emocionalno zlostavljanje</h2>
+  <p>Zlostavljanje nije samo fizičko. Ako te partner omalovažava, koristi krivicu ili kontroliše tvoje odluke – to je oblik emocionalnog zlostavljanja.</p>
+<p>Manipulacija često dolazi prikriveno. Ako se često pitaš da li si ti kriv/a, ili se neopravdano preispituješ – proveri da li te neko manipuliše. Ovaj oblik zlostavljanja stvara sumnju u sopstvenu realnost.</p> 
+<button onclick="nextScreen()">Prepoznajem zlostavljanje</button>
+
+</div>
+
+<!-- Screen 10 -->
+<div class="screen" id="screen-10">
+  <img src="LogoLjubav.png" alt="Logo" class="logo">
+  <h2>Manipulacija</h2>
+  <p>Ako tvoj partner uporno negira nešto što si siguran/na da se dogodilo, to je ozbiljan znak manipulacije.</p>
+<p>Imaš pravo da napustiš toksičnu vezu. Ljubav nije izgovor za trpljenje zlostavljanja – pomoć postoji, i nije sramota tražiti je. Poveri se nekome kome veruješ.</p>
+<p>Prvi korak ka izlasku iz zlostavljačke veze često je razgovor sa prijateljem, članom porodice ili stručnjakom.</p>
+<button onclick="nextScreen()">Biram istinu</button>
+
+</div>
+
+<!-- Screen 11 -->
+<div class="screen" id="screen-11">
+  <img src="LogoLjubav.png" alt="Logo" class="logo">
+  <h2>Izgradnja zdravog odnosa</h2>
+  <p>Veza te ne bi smela definisati. Zdrava veza znači očuvanje svog identiteta, ciljeva i vrednosti.</p>
+<p>Budi emocionalno stabilan/na i unutar i van veze. Ako sreću crpiš samo iz partnera, bićeš ranjiv/a. Radi na sebi i u vezi i van nje.</p>
+<p>Uči nove veštine. Hobiji, znanje ili novi izazovi jačaju tvoje samopouzdanje i unose svežinu u vezu.</p>
+<button onclick="nextScreen()">Želim zdravu vezu</button>
+
+</div>
+
+<!-- Screen 12 -->
+<div class="screen" id="screen-12">
+  <img src="LogoLjubav.png" alt="Logo" class="logo">
+  <h2>Lični razvoj</h2>
+  <p>Ne zaboravi prijatelje i porodicu. Održavanje drugih odnosa osigurava emocionalnu ravnotežu i zdraviju dinamiku u vezi.</p>
+<p>Postavi lične ciljeve. Ljubav je važna, ali tvoji snovi i ambicije su podjednako dragoceni – oni te čine potpunim/nom.</p>
+<button onclick="nextScreen()">Uravnotežen život</button>
+
+</div>
+
+<!-- Screen 13 -->
+<div class="screen" id="screen-13">
+  <img src="LogoLjubav.png" alt="Logo" class="logo">
+  <h2>Deca i Veza</h2>
+  <p><strong>Deca menjaju vezu.</strong> Ona su radost, ali zahtevaju vreme i energiju. Važno je prilagoditi se novim dinamikama.</p>
+<p><strong>Roditeljstvo je timski rad.</strong> Radite zajedno kao partneri na vaspitanju dece. Uzajamna podrška je ključna.</p>
+<p><strong>Ravnoteža je važna.</strong> Dok deca treba da budu prioritet, ne zanemaruj svoju vezu. Redovno vreme samo za vas dvoje pomaže održavanju veze.</p>
+<button onclick="nextScreen()">Zajedno u roditeljstvu</button>
+
+</div>
+
+<!-- Screen 14 -->
+<div class="screen" id="screen-14">
+  <img src="LogoLjubav.png" alt="Logo" class="logo">
+  <h2>Primer</h2>
+  <p><strong>Razgovarajte o pristupima roditeljstvu.</strong> Različita mišljenja o tome kako vaspitavati decu su prirodna, ali je važno imati usklađene vrednosti radi vaše porodice.</p>
+<p><strong>Predvodite primerom.</strong> Deca mnogo uče iz onoga što vide u vašoj vezi. Pokažite im kako se izražava poštovanje, ljubav i strpljenje.</p>
+<button onclick="nextScreen()">Harmonija u porodici</button>
+
+</div>
+
+<!-- Screen 15 -->
+<div class="screen" id="screen-15">
+  <img src="LogoLjubav.png" alt="Logo" class="logo">
+  <h2>Lična nezavisnost</h2>
+  <p>Biti u vezi ne znači izgubiti sebe. I dalje imaš pravo na svoje snove, misli i granice.</p>
+<p>Uživaj u svom vremenu. Samostalnost neguje unutrašnji mir i donosi ravnotežu u vezi.</p>
+<p>Uči da rešavaš probleme sam/a – to te jača i unutar, i van veze.</p>
+<p>Zdrava veza ti daje krila, a ne vezuje. Ako se osećaš ograničeno – zastani i razmisli. Ravnoteža između „mi“ i „ja“ održava vezu živom.</p>
+<button onclick="nextScreen()">Ostajem veran/na sebi</button>
+
+</div>
+
+<!-- Screen 16 -->
+<div class="screen" id="screen-16">
+  <img src="LogoLjubav.png" alt="Logo" class="logo">
+  <h2>Zajednički ciljevi</h2>
+  <p>Sednite i razgovarajte o budućnosti. Planiranje vas zbližava – i otkriva koliko ste usklađeni.</p>
+<p>Veliki ciljevi počinju malim dogovorima. Prvo vikend putovanje – kasnije možda zajednički dom. Ciljevi ne znače isto za svakoga. Važno je redovno ih proveravati i prilagođavati.</p>
+<p>Podržavajte se u ličnim planovima. Zajedno ste jači kada ne potiskujete individualnost.</p>
+<p>Planiranje ne ubija spontanost – ono pruža sigurnost znanja kuda idete.</p>
+<button onclick="nextScreen()">Gradimo zajedno</button>
+
+</div>
+
+<!-- Screen 17 -->
+<div class="screen" id="screen-17">
+  <img src="LogoLjubav.png" alt="Logo" class="logo">
+  <h2>Rast nakon raskida</h2>
+  <p>Raskid boli – ali može biti početak novog života. Dozvoli sebi da tuguješ.</p>
+<p>Nemoj odmah tražiti smisao. Ponekad vreme donosi odgovore koje sada ne možeš videti.</p>
+<p>Pisi, razgovaraj, kreći se. Čak i male rutine pomažu da povratiš snagu i osećaj kontrole.</p>
+<p>Ne moraš odmah ulaziti u novu vezu. Prvo nauči da budeš u redu sa sobom.</p>
+<p>Rast počinje tamo gde je delovalo da je kraj.</p>
+<button onclick="nextScreen()">Nastavljam da rastem</button>
+
+</div>
+
+<!-- Screen 18 -->
+<div class="screen" id="screen-18">
+  <img src="LogoLjubav.png" alt="Logo" class="logo">
+  <h2>Budućnost i Ljubav</h2>
+  <p>Zamisli kako želiš da tvoja budućnost izgleda. I nemoj čekati da neko drugi dođe i stvori je.</p>
+<p>Uči iz prošlosti, ali ne ostaj u njoj. Ljubav ne dolazi da „popravlja“ – dolazi da podrži ono što već raste.</p>
+<p>Neguj nadu, ali gradi realno. Ljubav je i izbor i osećanje.</p>
+<p>Ne zadovoljavaj se manje od onoga za šta znaš da zaslužuješ. Vreme ne leči – tvoja odluka da rasteš leči.</p>
+<p>Budućnost ne dolazi – ti je stvaraš.</p>
+<button onclick="nextScreen()">Stvaram budućnost</button>
+
+</div>
+
+<!-- Screen 19 -->
+<div class="screen" id="screen-19">
+  <img src="LogoLjubav.png" alt="Logo" class="logo">
+  <h2>Porodična pozadina i obrasci iz detinjstva</h2>
+  <p>Porodica u kojoj smo odrasli često oblikuje način na koji volimo, svađamo se i reagujemo. Obrasci iz detinjstva nesvesno se prenose u odnose – i korisni i štetni.</p>
+<p>Prepoznaj šta si naučio/la o ljubavi, granicama i emocijama kroz odnos sa roditeljima. Nisi vezan/a za prošlost – imaš pravo da stvoriš nove, zdravije obrasce.</p>
+<p>Razgovor sa partnerom o iskustvima iz porodice može doneti dublje razumevanje i bliskost. Promena počinje sa svešću. Razmisli: koje poruke iz detinjstva više ne koriste tvojoj sadašnjoj vezi?</p>
+<button onclick="nextScreen()">Biram zdrave obrasce</button>
+
+
+</div>
+
+<!-- Screen 20 -->
+<div class="screen" id="screen-19">
+  <img src="LogoLjubav.png" alt="Logo" class="logo">
+  <h2>Recept</h2>
+  <p>Ova aplikacija nije igra, ali se možeš vraćati na nju onoliko često koliko ti treba. Nema potrebe za žurbom. Njena svrha je da te podseti šta je zaista važno i da te podrži u trenucima krize.</p>
+<p>Kad god osetiš potrebu da razbistriš misli, koristi aplikaciju vlastitim tempom. Daj sebi prostora za refleksiju i slušanje u sebi.</p>
+<p>Naš cilj je tvoja jasnoća i unutrašnji mir.</p>
+<button class="btn" onclick="window.location.href='index.html'">Spreman/na sam da pažljivo posmatram život</button>
+>
+
+</div>
+
+<script>
+  function nextScreen() {
+    const screens = document.querySelectorAll('.screen');
+    let currentIndex = -1;
+
+    screens.forEach((screen, index) => {
+      if (screen.classList.contains('active')) {
+        screen.classList.remove('active');
+        currentIndex = index;
+      }
+    });
+
+    const nextIndex = currentIndex + 1;
+    if (nextIndex < screens.length) {
+      screens[nextIndex].classList.add('active');
+
+      // Update progress bar
+      const progress = ((nextIndex) / (screens.length - 1)) * 100;
+      document.getElementById('progress-bar').style.width = progress + '%';
+    }
+  }
+
+  function setScreenHeight() {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  }
+
+  // Poziv pri učitavanju i kada se promeni veličina prozora (npr. okretanje telefona)
+  window.addEventListener('load', setScreenHeight);
+  window.addEventListener('resize', setScreenHeight);
+
+function setVhUnit() {
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+}
+
+window.addEventListener('resize', setVhUnit);
+setVhUnit(); // pokreni odmah pri učitavanju
+
+
+</script>
+
+</body>
+</html>

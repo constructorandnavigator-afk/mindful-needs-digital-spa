@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The W. O. R. R. Y. Protocol</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  <style>
+    html, body {
+    overflow-y: auto;
+   -webkit-overflow-scrolling: touch; /* Za glatko skrolovanje na iOS-u */
+   }
+
+
+    .progress-container {
+      width: 100%;
+      background-color: #3b7a57; /* Maslinasto zelena pozadina */
+      height: 6px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .progress-bar {
+      height: 6px;
+      background-color: #ccff33; /* Sjajno žuto-zelena */
+      width: 0%;
+      transition: width 0.4s ease;
+    }
+
+    .screen {
+      display: none;
+      padding: 20px;
+      background: #CDEAC0; /* svetlo zelena pozadina sekcija */
+      color: #444;
+      min-height: 100vh; /* koristi min-height da omogući skrolovanje ako je sadržaj veći */
+      padding-bottom: 80px; /* prostor za futer, dovoljno da se ne preklapa */
+      overflow-y: auto;
+     -webkit-overflow-scrolling: touch;
+    }
+     
+     .screen.active {
+      display: block;
+    }
+
+    .logo {
+      width: 100px;
+      display: block;
+      margin: 0 auto 20px;
+    }
+
+   h2 {
+  background-color:  #4A90E2; 
+  color:  #FFFFFF; /* zlatan tekst */
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+
+    p {
+      background: #f1f8ec; /* veoma svetla nijansa zelene */
+      padding: 12px;
+      margin: 10px 0;
+      border-left: 4px solid #556B2F; /* maslinasto zelena linija */
+      border-radius: 8px;
+      line-height: 1.6em;
+    }
+
+    button {
+      background-color: #4A90E2; 
+      color: white;
+      padding: 10px 20px;
+      margin-top: 20px;
+      border: none;
+      border-radius: 12px;
+      font-size: 1em;
+      cursor: pointer;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    button:hover {
+     background-color: #2F6F9F; 
+    }
+
+    .header-text {
+       background-color: #556B2F; /* maslinasto zelena */
+      color: #B0B0B0;
+      text-align: center;
+      padding: 10px 0;
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        font-size: 14px;
+        margin: 0;
+      }
+
+      .logo {
+        width: 80px;
+      }
+
+      .progress-container {
+        height: 4px;
+      }
+
+      .screen {
+        padding: 15px;
+      }
+
+      button {
+        padding: 8px 16px;
+        font-size: 0.9em;
+      }
+
+      h2 {
+        font-size: 1.5em;
+      }
+
+      p {
+        font-size: 1em;
+      }
+    }
+@media (max-width: 400px) {
+  body {
+    font-size: 13px;
+  }
+
+  .logo {
+    width: 60px;
+  }
+
+  .header-text {
+    font-size: 1.2em;
+    padding: 8px 0;
+  }
+
+  h2 {
+    font-size: 1.3em;
+  }
+
+  p {
+    font-size: 0.95em;
+    padding: 10px;
+  }
+
+  button {
+    padding: 8px 12px;
+    font-size: 0.85em;
+  }
+
+  .screen {
+    padding: 12px;
+  }
+
+  .progress-container {
+    height: 3px;
+  }
+
+  .progress-bar {
+    height: 3px;
+  }
+
+ }
+
+.header-text {
+  margin-bottom: 20px; /* Razmak između glavnog teksta i sledećeg dela */
+}
+
+.pocket-solution, .pocket-essentials {
+ background-color:  #4A90E2; 
+  padding: 10px; /* Unutrašnji razmak unutar pozadine */
+  margin-top: 10px; /* Razmak između header teksta i novih div-ova */
+  border-radius: 5px; /* Zaobljeni uglovi pozadine */
+}
+
+.pocket-solution {
+  font-weight: bold; /* Isticanje teksta u pocket-solution */
+  color: #FFFFFF;
+}
+
+.pocket-essentials {
+  color: #FFD700; /* Možeš promeniti boju za drugi deo teksta */
+}
+
+   </style>
+</head>
+<body>
+
+<div class="header-text">
+   Budi prisutan, Razmisli smireno, Izaberi fokus, Gledaj širu sliku, Aktiviraj plan
+  <div class="pocket-solution"><strong>MINDFUL NEEDS DIGITAL SPA</strong></div>
+  <div class="pocket-essentials">Pocket Essentials Collection</div>
+</div>
+
+
+<div class="progress-container">
+  <div class="progress-bar" id="progress-bar"></div>
+</div>
+
+
+<!-- Intro Screen -->
+<div class="screen active" id="intro-screen">
+  <img src="logobriga.png" alt="Logo" class="logo">
+  <h2>
+  Dobrodošli u B.R.I.G.A. Aplikaciju<br>
+  Brzo oslobadjanje i prevazilaženje anksioznosti
+</h2>
+   <p><strong>B – Budi prisutan.</strong> Usmeri pažnju na sadašnji trenutak a ne na strahove.  
+<strong>R – Razmisli smireno.</strong> Prepoznaj misli ali ih neshvataj kao činjenice.</p>
+
+<p><strong>I – Izaberi fokus.</strong> Usmeri pažnju na ono što možeš da kontrolišeš.  
+<strong>G – Gledaj širu sliku.</strong> Seti se da trenutak nije ceo život.</p>
+
+<p><strong>A – Aktiviraj plan.</strong> Preduzmi mali, ostvariv korak ka rešenju.</p>
+   <button onclick="nextScreen()">Počni</button>
+</div>
+
+<!-- Screen 1 -->
+<div class="screen" id="screen-1">
+  <img src="logobriga.png" alt="Logo" class="logo">
+  <h2>B.R.I.G.A. Protokol - Početak</h2>
+  <p><strong>Osećam anksioznost ili strah.</p>
+  
+  <button onclick="nextScreen()">Nastavi</button>
+</div>
+
+<!-- Screen 2 -->
+<div class="screen" id="screen-2">
+  <img src="logobriga.png" alt="Logo" class="logo">
+  <h2>B.R.I.G.A. Protokol - Rizik</h2>
+  <p><strong>Da li mislite da trenutno postoji povećan nivo nelagodnosti?</p>
+  <button onclick="nextScreen()">Nastavi</button>
+</div>
+
+<!-- Screen 3 -->
+<div class="screen" id="screen-3">
+  <img src="logobriga.png" alt="Logo" class="logo">
+  <h2>B.R.I.G.A. Protokol - Istine</h2>
+  <p><strong>Korak po korak, rešenje je na vidiku!</p>
+  <p><strong>Svaka oluja prodje!</p>
+  <p><strong>Pravi koraci vode ka rešenju, na pravom ste putu!</p>
+  <p><strong>Nisi sam/sama, postoje ljudi koji mogu da pomognu!</p>
+  <button onclick="nextScreen()">Potvrdi</button>
+</div>
+
+<!-- Screen 4 -->
+<div class="screen" id="screen-4">
+  <img src="logobriga.png" alt="Logo" class="logo">
+  <h2>B.R.I.G.A. Protokol - Akcija</h2>
+  <p><strong>Menjam sve u vezi sa onim što me brine preduzimanjem akcije?</p>
+  <button onclick="nextScreen()">Da</button>
+</div>
+
+<!-- Screen 5 -->
+<div class="screen" id="screen-5">
+  <img src="logobriga.png" alt="Logo" class="logo">
+  <h2>B.R.I.G.A. Protokol - Napravi plan</h2>
+
+  <p><span style="color: #D5006D;"><strong>Šta?</strong></span> – Odgovori na pitanje šta tačno želiš da postigneš. Ovo je jasan i dostižan cilj jer bez njega nema pravca delovanja.. <span style="color: #D5006D;"><strong>Kada?</strong></span> – Odgovori na pitanje kada ćete preduzeti akciju. Vremenski okvir vam pomaže da izbegnete odugovlačenje i daje strukturu vašem planu.</p>
+
+  <p><span style="color: #D5006D;"><strong>Kako?</strong></span> – Odgovori na pitanje kako ćete sprovesti svoj plan. Ovo su konkretne akcije koje ćete preduzeti da bi postigli svoj cilj. <span style="color: #D5006D;"><strong>Prilagodi</strong></span> – Odgovori kako ćete se prilagoditi ako se suočite sa preprekama. Fleksibilnost vam pomaže da ostanete na pravom putu i pronadjete nove načine za postizanje svog cilja. <span style="color: #D5006D;"><strong>Zašto?</strong></span> – Odgovori na pitanje žašto je važno da ovo uradite. Jasan razlog vam pomaže da ostanete motivisani i istrajete čak i kada je teško.</p>
+
+  <button onclick="nextScreen()">Razumem</button>
+</div>
+
+
+<!-- Screen 6 -->
+<div class="screen" id="screen-6">
+  <img src="logobriga.png" alt="Logo" class="logo">
+  <h2>B.R.I.G.A. Protokol - Vreme i Poverenje</h2>
+  <p>Utvrdite da li je vaša zabrinutost zasnovana na činjenicama ili niste sasvim sigurni.</p>
+  <p>Da li će potencijalni problem biti realno značajan za 2 meseca?</p>
+  <p>Pitajte nekoga kome verujete da li potvrdjuje ozbiljnost problema.</p>
+  <button onclick="nextScreen()">Dogovoreno</button>
+</div>
+
+<!-- Screen 7 -->
+<div class="screen" id="screen-7">
+  <img src="logobriga.png" alt="Logo" class="logo">
+  <h2>B.R.I.G.A. Protokol - Distanciranje</h2>
+  
+  <p>Tvoji planovi su važniji od svih briga koje te muče.<br>Provedite prijatno vreme maštajući i planirajući radosne trenutke.</p>
+  <p>Vratite se kasnije na teškoće.<br>Bićete odmorniji i biće vam lakše da pronadjete rešenje.</p>
+  <p>Distancirajte se od pogrešnih misli - one vas vode u pogrešnom smeru.<br>Posvetite svoj dan svemu što vam donosi radost.</p>
+
+  <button onclick="nextScreen()">Super</button>
+</div>
+
+
+
+<!-- Screen 8 -->
+<div class="screen" id="screen-8">
+  <img src="logobriga.png" alt="Logo" class="logo">
+  <h2>B.R.I.G.A. Protokol - Zajedno</h2>
+  <p>Zajedno sa osobom koju voliš razmotri svoje opcije.</p>
+<p>Zamisli što više detalja možeš.</p>
+<p>Zapiši šta ti je potrebno da ostvariš svoje planove i napravi prvi korak.</p>
+<p>Svaka misao nije stvarnost.</p>
+<p>Osećanja nisu pretnja — ona samo pokazuju da sam živ/a.</p>
+<p>Imam nekoga ko me podržava.</p>
+<button onclick="nextScreen()">Osećam se bolje</button>
+
+</div>
+
+<!-- Screen 9 -->
+<div class="screen" id="screen-9">
+  <img src="logobriga.png" alt="Logo" class="logo">
+  <h2>B.R.I.G.A. Protokol - Značenje</h2>
+  <p>Znaj da će sve naći svoj smisao ako pažljivo posmatraš ono što te opterećuje i izbegavaš donošenje ishitrenih odluka.</p>
+<p>Ljudi rešavaju i najteže probleme.</p>
+<p>Svi napreduju svojim tempom.</p>
+<button onclick="nextScreen()">Posmatram pažljivo i bez žurbe</button>
+
+</div>
+
+<!-- Screen 10 -->
+<div class="screen" id="screen-10">
+  <img src="logobriga.png" alt="Logo" class="logo">
+  <h2>B.R.I.G.A. Protokol - Zadovoljstvo</h2>
+  <p>Ne želi previše odjednom.<br>Počni od onoga što ti je najvažnije.</p>
+<p>Tako ćeš osetiti zadovoljstvo uspeha.<br>Svi ljudi osećaju i zadovoljstvo i nezadovoljstvo.</p>
+<p>Ostanimo zauvek mladi i u potrazi za nečim dubljim i smislenijim.<br>To nešto nas pokreće u pravcu rasta.<br>Daje nam hrabrost da učimo iz svakog iskustva.</p>
+
+<button onclick="nextScreen()">Ja sam hrabar/a</button>
+
+</div>
+
+<!-- Screen 11 -->
+<div class="screen" id="screen-11">
+  <img src="logobriga.png" alt="Logo" class="logo">
+  <h2>B.R.I.G.A. Protokol - Promena</h2>
+ <p><strong style="color: #d63384;">Menjaj se, rasti, ali ostani TI!</strong><br>
+<strong style="color: #d63384;">Čovek potpuno obnovi sve ćelije u svom telu:</strong></p>
+
+<p><strong style="color: #d63384;">Koža:</strong> 30 dana<br>
+<strong style="color: #d63384;">Mišići:</strong> 15–30 dana</p>
+
+<p><strong style="color: #d63384;">Crvena krvna zrnca:</strong> 120 dana<br>
+<strong style="color: #d63384;">Kosti:</strong> 10 godina<br>
+<strong style="color: #d63384;">Sve se menja, a ti rasteš zajedno sa tim promenama.</strong></p>
+
+<button onclick="nextScreen()">Spreman/na sam</button>
+
+</div>
+
+<!-- Screen 12 -->
+<div class="screen" id="screen-12">
+  <img src="logobriga.png" alt="Logo" class="logo">
+  <h2>B.R.I.G.A. Protokol - Misli i emocije</h2>
+  <p>Svi mi često reagujemo impulsivno na osećanja. Važno je znati da naše misli upravljaju našim osećanjima.</p>
+<p>Stvarajmo samo pozitivne misli.</p>
+<p>Na naše ponašanje utiče 60% gena i 40% okruženja.</p>
+<p>Znaj ovo! Okruženje ima veliku moć nad nama, ALI u stvarnosti, MI možemo da biramo svoje okruženje.</p>
+<p>Ja ću izabrati: Gde? Šta? Kako? Sa kim?</p>
+<button onclick="nextScreen()">Tako je</button>
+
+</div>
+
+<!-- Screen 13 -->
+<div class="screen" id="screen-13">
+  <img src="logobriga.png" alt="Logo" class="logo">
+  <h2>B.R.I.G.A. Protokol  - Recept</h2>
+  <p>Ova aplikacija vraća voz besmislenih misli na pravi kolosek za samo 25 sekundi.</p>
+<p>Nije napravljena za zabavu, ali je možeš ponavljati onoliko puta koliko želiš, kad god osetiš potrebu.</p>
+<p>Naš recept: 3 puta dnevno, po 3 kruga svaki put.</p>
+<button class="btn" onclick="window.location.href='index.html'">Počinjem novi krug</button>
+
+</div>
+<script>
+  function nextScreen() {
+    const screens = document.querySelectorAll('.screen');
+    let currentIndex = -1;
+
+    screens.forEach((screen, index) => {
+      if (screen.classList.contains('active')) {
+        screen.classList.remove('active');
+        currentIndex = index;
+      }
+    });
+
+    const nextIndex = currentIndex + 1;
+    if (nextIndex < screens.length) {
+      screens[nextIndex].classList.add('active');
+
+      // Update progress bar
+      const progress = ((nextIndex) / (screens.length - 1)) * 100;
+      document.getElementById('progress-bar').style.width = progress + '%';
+    }
+  }
+
+  function setScreenHeight() {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  }
+
+  // Poziv pri učitavanju i kada se promeni veličina prozora (npr. okretanje telefona)
+  window.addEventListener('load', setScreenHeight);
+  window.addEventListener('resize', setScreenHeight);
+
+function setVhUnit() {
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+}
+
+window.addEventListener('resize', setVhUnit);
+setVhUnit(); // pokreni odmah pri učitavanju
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Kockanje Protokol</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  <style>
+    html, body {
+    overflow-y: auto;
+   -webkit-overflow-scrolling: touch; /* Za glatko skrolovanje na iOS-u */
+   }
+
+
+    .progress-container {
+      width: 100%;
+      background-color: #ffe0b3; /* svetla narandžasta */
+      height: 6px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .progress-bar {
+      height: 6px;
+      background-color: #ff4f00; /* Jarko crvena boja */
+      width: 0%;
+      transition: width 0.4s ease;
+    }
+
+    .screen {
+      display: none;
+      padding: 20px;
+      background: #ffffff;
+      color: #444;
+      min-height: 100vh; /* koristi min-height da omogući skrolovanje ako je sadržaj veći */
+      padding-bottom: 80px; /* prostor za futer, dovoljno da se ne preklapa */
+      overflow-y: auto;
+     -webkit-overflow-scrolling: touch;
+    }
+     
+     .screen.active {
+      display: block;
+    }
+
+    .logo {
+      width: 100px;
+      display: block;
+      margin: 0 auto 20px;
+    }
+
+    h2 {
+      background-color: #d3d3d3; /* Svetlija siva */
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    p {
+      background: #fff3e0; /* svetla narandžasta pozadina */
+      padding: 12px;
+      margin: 10px 0;
+      border-left: 4px solid #ff8c00; /* narandžasta boja */
+      border-radius: 8px;
+      line-height: 1.6em;
+    }
+
+    button {
+      background-color: #ff0000; /* Crvena boja */
+      color: white;
+      padding: 10px 20px;
+      margin-top: 20px;
+      border: none;
+      border-radius: 12px;
+      font-size: 1em;
+      cursor: pointer;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    button:hover {
+      background-color: #cc0000; /* Tamnija crvena pri hover-u */
+    }
+
+    .header-text {
+      background-color: #808080; /* Siva boja */
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        font-size: 14px;
+        margin: 0;
+      }
+
+      .logo {
+        width: 80px;
+      }
+
+      .progress-container {
+        height: 4px;
+      }
+
+      .screen {
+        padding: 15px;
+      }
+
+      button {
+        padding: 8px 16px;
+        font-size: 0.9em;
+      }
+
+      h2 {
+        font-size: 1.5em;
+      }
+
+      p {
+        font-size: 1em;
+      }
+    }
+@media (max-width: 400px) {
+  body {
+    font-size: 13px;
+  }
+
+  .logo {
+    width: 60px;
+  }
+
+  .header-text {
+    font-size: 1.2em;
+    padding: 8px 0;
+  }
+
+  h2 {
+    font-size: 1.3em;
+  }
+
+  p {
+    font-size: 0.95em;
+    padding: 10px;
+  }
+
+  button {
+    padding: 8px 12px;
+    font-size: 0.85em;
+  }
+
+  .screen {
+    padding: 12px;
+  }
+
+  .progress-container {
+    height: 3px;
+  }
+
+  .progress-bar {
+    height: 3px;
+  }
+
+ }
+
+.header-text {
+  margin-bottom: 20px; /* Razmak između glavnog teksta i sledećeg dela */
+}
+
+.pocket-solution, .pocket-essentials {
+ background-color: #ff8c00; /* narandžasta boja */
+  padding: 10px; /* Unutrašnji razmak unutar pozadine */
+  margin-top: 10px; /* Razmak između header teksta i novih div-ova */
+  border-radius: 5px; /* Zaobljeni uglovi pozadine */
+}
+
+.pocket-solution {
+  font-weight: bold; /* Isticanje teksta u pocket-solution */
+}
+
+.pocket-essentials {
+  color: #555; /* Možeš promeniti boju za drugi deo teksta */
+}
+
+   </style>
+</head>
+<body>
+
+<div class="header-text">
+  Uravnoteži, Traži, Stvori, Razbij, Posmatraj, Maštaj, Obrati pažnju, Razvijaj se
+  <div class="pocket-solution"><strong>MINDFUL NEEDS DIGITAL SPA</strong></div>
+  <div class="pocket-essentials">Pocket Essentials Collection</div>
+</div>
+
+
+<div class="progress-container">
+  <div class="progress-bar" id="progress-bar"></div>
+</div>
+
+
+<!-- Intro Screen -->
+<div class="screen active" id="intro-screen">
+  <img src="LogoRiskTrack.png" alt="Logo" class="logo">
+ <h2>
+  Dobrodošli u KOCKANJE Aplikaciju<br>
+  Brza kontrola i oslobadjanje od kockanja
+</h2>
+  <p>
+  Kladjenje se prikazuje kao zabava, dok iza sjajnih reklama i obećanja leži ozbiljan problem koji pogađa veliki broj ljudi i njihove porodice.</p>
+<p>Oslobodi se ove opsesivne potrebe i njenih posledica!</p>
+<button onclick="nextScreen()">U redu</button>
+</div>
+
+<!-- Screen 1 -->
+<div class="screen" id="screen-1">
+  <img src="LogoRiskTrack.png" alt="Logo" class="logo">
+  <h2>KOCKANJE - Korak po korak</h2>
+  <p>
+  <strong>G – Učvrsti svoj cilj:</strong> Seti se šta te pokreće. Sloboda, zdravlje, porodica – to je tvoja snaga. 
+  <strong>A – Zatraži podršku:</strong> Razgovor pomaže. Ne moraš nositi ovaj teret sam/a. 
+  <strong>M – Napravi plan:</strong> Kada poriv nastupi, znaš šta da radiš. Plan ti daje sigurnost. 
+  <strong>B – Prekini obrazac:</strong> Promeni rutinu, promeni putanju. Čak i najmanji korak može promeniti tok. 
+  <strong>L – Pogledaj alternative:</strong> Postoje zdraviji načini da zadovoljiš svoje potrebe. 
+  <strong>I – Zamislite posledice:</strong> Razmisli kuda vodi tvoj izbor – sada i u narednoj godini. 
+  <strong>N – Primeti okidače:</strong> Koje misli, osećanja, mesta ili osobe izazivaju poriv? Budi svestan/svesna. 
+  <strong>G – Rasti izvan kockanja:</strong> Ti nisi tvoja prošlost. Gradi život pun smisla i slobode.
+</p>
+<button onclick="nextScreen()">Započni svoju transformaciju</button>
+
+</div>
+
+<!-- Screen 2 -->
+<div class="screen" id="screen-2">
+  <img src="LogoRiskTrack.png" alt="Logo" class="logo">
+  <h2>KOCKANJE - Zastani</h2>
+  <p><strong>Zastani i razmisli:</strong> </p>
+<p><strong>Da li je kockanje više od zabave?</strong> Da li često razmišljaš o svom sledećem ulogu?</p>
+<p><strong>Osećaš krivicu ili nelagodnost?</strong> To je znak. Zabava može preći u naviku — a navika u zavisnost.</p>
+<p><strong>Ovo nije kompletno rešenje,</strong> ali je prvi korak. Ti si ovde. To je važno.</p>
+<button onclick="nextScreen()">Prepoznajem ovo kod sebe</button>
+
+</div>
+
+<!-- Screen 3 -->
+<div class="screen" id="screen-3">
+  <img src="LogoRiskTrack.png" alt="Logo" class="logo">
+  <h2>The KOCKANJE. - Igra ili bekstvo?</h2>
+  <p><strong>Da li se kockaš da pobegneš od stvarnosti?</strong> To nije igra kada boli.</p>
+<p><strong>Problematični kockari trebaju pomoć —</strong> nisu u kontroli. Novac gubi smisao. Sve je samo još jedan ulog.</p>
+<p><strong>Osećaš nemir kada se ne kockaš?</strong> To je znak. Kockanje vidiš kao sledeću priliku za sreću.</p>
+<p><strong>Kockanje te udaljava</strong> od porodice, prijatelja i obaveza.</p>
+<button onclick="nextScreen()">Oslobodi se iluzije</button>
+
+</div>
+
+<!-- Screen 4 -->
+<div class="screen" id="screen-4">
+  <img src="LogoRiskTrack.png" alt="Logo" class="logo">
+  <h2>KOCKANJE -Trenutak kada sve počinje</h2>
+  <p>Kada si odigrao/la svoj prvi ulog? Šta te privuklo i kako si se tada osećao/la?</p>
+<p>Ta kombinacija radoznalosti, uzbuđenja i vršnjačkog pritiska može dovesti do ozbiljne štete. Govoriš sebi da kontrolišeš situaciju. Kažeš da je zabavno, ali osećaš pritisak i nemir.</p>
+<p>Izbegavaš da se suočiš sa stvarnim gubicima. Novac koji si izgubio/la se ne može vratiti.</p>
+<p>Povratak kockanju znači gubitak novca — i vremena u životu. Kockanje je biznis napravljen da pobedi na račun kockara.</p>
+<button onclick="nextScreen()">Preuzmi odgovornost</button>
+
+</div>
+
+<!-- Screen 5 -->
+<div class="screen" id="screen-5">
+  <img src="LogoRiskTrack.png" alt="Logo" class="logo">
+  <h2>KOCKANJE – Ciklus koji se ponavlja</h2>
+  <p>Nada. Gubitak. Krivica. Pa opet kockanje...</p>
+<p>💭 Zvuči poznato?</p>
+<p>Što duže traje, to te dublje zarobljava.</p>
+<p>Gubiš li osećaj za vreme dok se kockaš?</p>
+<p>Praviš li se da to nije veliki problem?</p>
+<p>U dubini duše znaš da nije u redu — ali nastavljaš.</p>
+<button onclick="nextScreen()">Prekini ciklus</button>
+
+</div>
+
+
+<!-- Screen 6 -->
+<div class="screen" id="screen-6">
+  <img src="LogoRiskTrack.png" alt="Logo" class="logo">
+  <h2>KOCKANJE – Novac nije razlog</h2>
+ <p><strong>Uzbuđenje, napetost, iluzija kontrole.</strong> Kockanje skriva unutrašnju prazninu.</p>
+<p><strong>Šta ti zaista nedostaje u životu?</strong> Prekini sa pokušajima da izlečiš dušu brojevima — suoči se sa istinom.</p>
+<p><strong>Krediti, prekoračenja i dugovi čekaju da te unište.</strong> Jesi li upao/la u zamku kockanja bez novca?</p>
+<p><strong>Ljudi koje voliš pate —</strong> ili će uskoro početi.</p>
+<button onclick="nextScreen()">Izleči unutrašnje rane</button>
+
+</div>
+
+<!-- Screen 7 -->
+<div class="screen" id="screen-7">
+  <img src="LogoRiskTrack.png" alt="Logo" class="logo">
+ <h2>KOCKANJE – Cena nemira</h2>
+  <p>Osećaš li kamen u stomaku nakon kockanja? Tvoje telo ne laže – upozorava te.</p>
+<p><strong>Stalna napetost te iscrpljuje.</strong> Greška je u odluci. Promeni tu odluku.</p>
+<p><strong>Tvoj novčanik, odnosi i posao će patiti.</strong> Lažna želja da nastaviš vodi te ka propasti.</p>
+<p><strong>Tvoj život i pravi prijatelji nisu u kazinu.</strong> Prave veze su van igre.</p>
+<button onclick="nextScreen()">Prepoznajem posledice</button>
+
+</div>
+
+<!-- Screen 8 -->
+<div class="screen" id="screen-8">
+  <img src="LogoRiskTrack.png" alt="Logo" class="logo">
+  <h2>KOCKANJE – Budi Borac</h2>
+  <p><strong>Uvek neko drugi pati.</strong> Da li iko zna kroz šta prolaziš?</p>
+<p><strong>Ljudi ne mogu pomoći ako ne znaju.</strong> Nisi sam/a u ovome, ali takođe nisi jedini/a koji pati.</p>
+<p><strong>Vredi se boriti za sebe i za druge.</strong> Kockanje zatvara vrata bliskosti.</p>
+<p><strong>Nisi slab/a.</strong> Povređen/a si, i možeš da se izlečiš.</p>
+<button onclick="nextScreen()">Bori se za sebe</button>
+
+</div>
+
+<!-- Screen 9 -->
+<div class="screen" id="screen-9">
+  <img src="LogoRiskTrack.png" alt="Logo" class="logo">
+  <h2>KOCKANJE – Prijatelj ili neprijatelj?</h2>
+ <p><strong>Ako ovo čitaš, znači da postoji deo tebe koji želi da preživi.</strong> Nisi slab/a – boriš se za svoj život.</p>
+<p><strong>Taj deo nije slab.</strong> To je tvoj saveznik, koji te vodi ka slobodi.</p>
+<p><strong>Taj prijatelj u tebi kaže:</strong> Dosta! Želi mir, dostojanstvo i novi početak.</p>
+<p><strong>Mnogi misle da ne mogu prestati da se kockaju, ali to nije tačno.</strong> Glas koji ti kaže „još jedna igra neće škoditi“ je glas tvog neprijatelja.</p>
+<button onclick="nextScreen()">Izaberi slobodu</button>
+
+</div>
+
+<!-- Screen 10 -->
+<div class="screen" id="screen-10">
+  <img src="LogoRiskTrack.png" alt="Logo" class="logo">
+   <h2>KOCKANJE – Mogućnosti</h2>
+  <p>
+  <strong>Ako prestaneš sa kockanjem, šta bi radio/la?</strong> Otvorio bi ti se sasvim novi svet mogućnosti.<br>
+  <strong>Kako bi izgledao tvoj dan kada kockanje ne bi bilo deo njega?</strong> Zamislite dan pun jasnoće i svrhe.
+</p>
+<p>
+  <strong>Ko bi želeo/la da budeš?</strong> Osoba koja ima kontrolu, donosi odluke zasnovane na rastu, a ne na impulsu.<br>
+  <strong>Počni da zamišljaš, pišeš, planiraš.</strong> Tvoj novi život počinje u trenutku kada odlučiš da ga stvoriš.
+</p>
+<p>
+  <strong>Novi život počinje u tvom umu.</strong> Sve počinje od odluke da promeniš način razmišljanja.<br>
+  <strong>Bez kockanja, dobijaš više vremena, novca i energije.</strong> Možeš birati kako da ih uložiš u bolju budućnost.
+</p>
+<button onclick="nextScreen()">Odlučujem o svojoj budućnosti</button>
+
+</div>
+
+<!-- Screen 11 -->
+<div class="screen" id="screen-11">
+  <img src="LogoRiskTrack.png" alt="Logo" class="logo">
+  <h2>KOCKANJE – Jačanje slobode</h2>
+ <p><strong>Svakim porivom koji odoliš, jačaš svoju slobodu.</strong> Svaka mala pobeda je kao cigla u temelju tvoje slobode.</p>
+<p><strong>Ne traži savršenstvo – traži doslednost.</strong> Dan po dan. Tako se menja život.</p>
+<p><strong>Planiraj svoj dan: Kako? Sa kim? Kada?</strong> Sve oko tebe su ljudi od kojih možeš učiti.</p>
+<p><strong>Budućnost se gradi u sadašnjosti.</strong></p>
+<button onclick="nextScreen()">Nastavi da gradiš</button>
+
+</div>
+
+<!-- Screen 12 -->
+<div class="screen" id="screen-12">
+  <img src="LogoRiskTrack.png" alt="Logo" class="logo">
+   <h2>KOCKANJE – Ko su tvoji ljudi?</h2>
+  <p><strong>Kome veruješ?</strong> Razmisli o ljudima u svom životu koji su pouzdani i podržavaju te. 
+<strong>Ko bi mogao biti tvoja podrška?</strong> Prepoznaj one koji su uvek tu za tebe i spremni da pomognu.</p>
+<p><strong>Pravi prijatelji žele tvoje izlečenje.</strong> Stajaće uz tebe, neće te osuđivati i navijaće za tvoj rast. 
+<strong>Kome bi mogao reći istinu?</strong> Budi iskren/a sa onima koji razumeju i žele ti najbolje.</p>
+<p><strong>Malo ko uspeva sam.</strong> Uvek je lakše uz podršku. Ne moraš to raditi sam/a.</p>
+<button onclick="nextScreen()">Pronaći ću podršku</button>
+
+</div>
+
+<!-- Screen 13 -->
+<div class="screen" id="screen-13">
+  <img src="LogoRiskTrack.png" alt="Logo" class="logo">
+   <h2>KOCKANJE – Pomoć je realna</h2>
+ <p><strong>Postoje ljudi koji ne osuđuju jer razumeju.</strong> Oni ti pružaju bezuslovnu podršku.</p>
+<p><strong>Podrška je dostupna.</strong> Postoje resursi i ljudi spremni da ti pomognu na svakom koraku.</p>
+<p><strong>Povezanost je izlečenje koje deluje.</strong> Obrati se i pronaći ćeš snagu u podršci drugih.</p>
+<button onclick="nextScreen()">Obrati se</button>
+
+</div>
+
+<!-- Screen 14 -->
+<div class="screen" id="screen-14">
+  <img src="LogoRiskTrack.png" alt="Logo" class="logo">
+ <h2>KOCKANJE – Ostani spreman/na</h2>
+  <p><strong>Doći će dan kada ćeš osetiti poriv da se vratiš kockanju.</strong> Kada se to desi, seti se lica onih koje voliš. 
+<strong>Pripremi svoj S.O.S. plan — šta ćeš učiniti kada nastupi kriza.</strong> Koga ćeš pozvati, gde ćeš otići, koje reči ćeš sebi reći.</p>
+<p><strong>Krize dolaze i prolaze.</strong> Budi spreman/a. 
+<strong>Zameni kockanje aktivnostima koje ti pomažu da rasteš.</strong> Svaki trenutak rasta gradi jaču verziju tebe.</p>
+<button onclick="nextScreen()">Spreman/na sam</button>
+
+</div>
+
+<!-- Screen 15-->
+<div class="screen" id="screen-15">
+  <img src="LogoRiskTrack.png" alt="Logo" class="logo">
+ <h2>KOCKANJE – Prevazidji izazove</h2>
+  <p><strong>Kockanje nije mana karaktera — to je stanje koje možeš prevazići.</strong> Ne definiše te. 
+<strong>Postoji čitav organizovani sistem koji je napravljen da te vrati.</strong> Budi svestan/a i ostani snažan/na.</p>
+<p><strong>Nijedan uspeh nije potpuno pravolinijski.</strong> Nastavi da donosiš dobre odluke, i pravac će biti napred.</p>
+<button onclick="nextScreen()">Ostani snažan/na</button>
+
+</div>
+
+<!-- Screen 16 -->
+<div class="screen" id="screen-16">
+  <img src="LogoRiskTrack.png" alt="Logo" class="logo">
+  <h2>KOCKANJE – Identitet</h2>
+<p><strong>Nisi kockar/ka.</strong> Ti si osoba koja prolazi kroz težak period.</p>
+<p><strong>Snaga, karakter i mudrost</strong> se grade kroz borbu.</p>
+<p><strong>Oslobodi se dosade i straha.</strong> Dosada pokazuje da se nisi angažovao/la u nečemu značajnom, a strah te obeshrabruje da ideš napred.</p>
+<p><strong>Sačuvaj i isplaniraj nešto lepo</strong> za sebe i one koje voliš. Povrati kontrolu.</p>
+<button onclick="nextScreen()">Biram svoje pravo ja</button>
+
+</div>
+
+<!-- Screen 17 -->
+<div class="screen" id="screen-17">
+  <img src="LogoRiskTrack.png" alt="Logo" class="logo">
+   <h2>KOCKANJE – Zaštiti ono što je važno</h2>
+  <p><strong>Roditelji, braća i sestre, partneri, deca – svi su deo tvoje borbe.</strong> I oni su pogođeni onim što prolaziš.</p>
+<p><strong>Oslobodi ih ovog ciklusa užasa.</strong> Budi primer hrabrosti, ideja i posvećenosti.</p>
+<p><strong>Organizatori kockanja često koriste pretnje i ucene.</strong> Dugovi prema njima mogu prerasti u fizičke pretnje.</p>
+<button onclick="nextScreen()">Biram da zaštitim</button>
+
+</div>
+
+<!-- Screen 18 -->
+<div class="screen" id="screen-18">
+  <img src="LogoRiskTrack.png" alt="Logo" class="logo">
+   <h2>KOCKANJE – Zaštiti svoje voljene</h2>
+  <p><strong>Tvoja porodica može postati meta ako ne preduzmeš akciju.</strong> Zaštiti ih tako što ćeš zaštititi sebe.</p>
+<p><strong>Gubitak novca je tek početak.</strong> Strah, nasilje i destrukcija često slede.</p>
+<p><strong>Odluke se ne donose samo jednom.</strong> One se donose svakog dana, iznova i iznova.</p>
+<button onclick="nextScreen()">Deluj pre nego što bude kasno</button>
+
+</div>
+
+<!-- Screen 19 -->
+<div class="screen" id="screen-19">
+  <img src="LogoRiskTrack.png" alt="Logo" class="logo">
+ <h2>KOCKANJE – Recept</h2>
+  <p><strong>Ova aplikacija nije igra, ali možeš je prolaziti onoliko puta koliko želiš.</strong> Uzimaj svoje vreme. Njena svrha je da te podseti na prave vrednosti i da te ohrabri u trenucima krize.</p>
+<p><strong>Kad god osetiš potrebu da razjasniš stvari za sebe,</strong> prolazi kroz ovu aplikaciju onoliko polako koliko ti je potrebno. Daj sebi vreme da razmisliš i reflektuješ.</p>
+<p><strong>Tvoj uspeh je ostvarenje našeg cilja.</strong></p>
+<button class="btn" onclick="window.location.href='index.html'">Novi korak napred</button>
+
+</div>
+
+<script>
+  function nextScreen() {
+    const screens = document.querySelectorAll('.screen');
+    let currentIndex = -1;
+
+    screens.forEach((screen, index) => {
+      if (screen.classList.contains('active')) {
+        screen.classList.remove('active');
+        currentIndex = index;
+      }
+    });
+
+    const nextIndex = currentIndex + 1;
+    if (nextIndex < screens.length) {
+      screens[nextIndex].classList.add('active');
+
+      // Update progress bar
+      const progress = ((nextIndex) / (screens.length - 1)) * 100;
+      document.getElementById('progress-bar').style.width = progress + '%';
+    }
+  }
+
+  function setScreenHeight() {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  }
+
+  // Poziv pri učitavanju i kada se promeni veličina prozora (npr. okretanje telefona)
+  window.addEventListener('load', setScreenHeight);
+  window.addEventListener('resize', setScreenHeight);
+
+function setVhUnit() {
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+}
+
+window.addEventListener('resize', setVhUnit);
+setVhUnit(); // pokreni odmah pri učitavanju
+
+
+</script>
+
+</body>
+</html>
